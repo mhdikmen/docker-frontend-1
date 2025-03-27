@@ -1,0 +1,17 @@
+# sudo docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app 357a68b13371
+# sudo docker build -f Dockerfile.dev .
+# sudo docker run -it  81150b87a54b npm run test
+# sudo docker exec -it 3bc1c0cb2a12 npm run test
+# sudo docker attach 3d6f036bc6a0
+# sudo docker compose up --build
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install 
+
+COPY . .
+
+CMD [ "npm","run","start" ]
